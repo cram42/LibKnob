@@ -1,0 +1,26 @@
+{
+    "name": "LibKnob",
+    "version": "1.0.0",
+    "description": "An Arduino library for rotary-encoder-based controls",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cram42/LibKnob.git"
+    },
+    "authors": [
+        {
+            "name": "Grant Le Roux",
+            "email": "grant.leroux@gmail.com"
+        }
+    ],
+    "license": "GPL-3.0-or-later",
+    "dependencies": [
+        {
+            "owner": "mathertel",
+            "name": "RotaryEncoder",
+            "version": "^1.5.2"
+        }
+    ],
+    "frameworks": [ "arduino" ],
+    "platforms": [ "atmelavr" ],
+    "headers": [ "LibKnob.h" ]
+}
