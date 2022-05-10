@@ -14,7 +14,7 @@ void KnobControlI8::set_min_limit(int8_t limit) { this->_limit_min = limit; }
 void KnobControlI8::set_rolling(bool rolling) { this->_rolling = rolling; }
 
 
-void KnobControlI8::_do_change(int32_t movement, float acceleration) {
+ValueChangeType KnobControlI8::_do_change(int32_t movement, float acceleration) {
     if (!this->_enabled) return;
     int8_t change = movement * round((float)this->_increment_size * acceleration);
     int8_t current = *this->_target;
@@ -28,5 +28,8 @@ void KnobControlI8::_do_change(int32_t movement, float acceleration) {
     }
 
     *this->_target += change;
-    if (this->_callback_set) this->_callback(change);
+    
+    if (change > 0) return ValueChangeType::Increase;
+    else if (change < 0) return ValueChangeType::Decrease;
+    else return ValueChangeType::Nothing;
 }

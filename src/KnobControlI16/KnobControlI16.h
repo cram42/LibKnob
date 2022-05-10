@@ -19,6 +19,6 @@ class KnobControlI16 : public KnobControlBase {
         int16_t _limit_min = INT16_MIN;
         bool _rolling = false;
 
-        void _do_change(int32_t movement, float acceleration);
+        ValueChangeType _do_change(int32_t movement, float acceleration);
 
 };

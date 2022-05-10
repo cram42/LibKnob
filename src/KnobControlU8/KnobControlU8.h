@@ -19,6 +19,6 @@ class KnobControlU8 : public KnobControlBase {
         uint8_t _limit_min = 0;
         bool _rolling = false;
 
-        void _do_change(int32_t movement, float acceleration);
+        ValueChangeType _do_change(int32_t movement, float acceleration);
 
 };

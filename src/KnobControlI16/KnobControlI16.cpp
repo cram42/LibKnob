@@ -14,7 +14,7 @@ void KnobControlI16::set_min_limit(int16_t limit) { this->_limit_min = limit; }
 void KnobControlI16::set_rolling(bool rolling) { this->_rolling = rolling; }
 
 
-void KnobControlI16::_do_change(int32_t movement, float acceleration) {
+ValueChangeType KnobControlI16::_do_change(int32_t movement, float acceleration) {
     if (!this->_enabled) return;
     int16_t change = movement * round((float)this->_increment_size * acceleration);
     int16_t current = *this->_target;
@@ -28,5 +28,8 @@ void KnobControlI16::_do_change(int32_t movement, float acceleration) {
     }
 
     *this->_target += change;
-    if (this->_callback_set) this->_callback(change);
+    
+    if (change > 0) return ValueChangeType::Increase;
+    else if (change < 0) return ValueChangeType::Decrease;
+    else return ValueChangeType::Nothing;
 }

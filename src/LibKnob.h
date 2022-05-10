@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <RotaryEncoder.h>
 
+#include "Common/Common.h"
 #include "KnobControlBase/KnobControlBase.h"
 #include "KnobControlI8/KnobControlI8.h"
 #include "KnobControlU8/KnobControlU8.h"
@@ -13,7 +14,7 @@
 class Knob {
     
     public:
-        Knob(RotaryEncoder* encoder);
+        Knob(RotaryEncoder* encoder, uint8_t button_pin = -1);
 
         void add_control(KnobControlBase* control);
         void begin();
@@ -21,6 +22,9 @@ class Knob {
 
     private:
         RotaryEncoder* _encoder;
+        bool _button_enabled = false;
+        uint8_t _button_pin;
+        bool _button_was = HIGH;
 
         KnobControlBase* _controls[10];
         uint8_t _num_controls = 0;

@@ -19,6 +19,6 @@ class KnobControlU16 : public KnobControlBase {
         uint16_t _limit_min = 0;
         bool _rolling = false;
 
-        void _do_change(int32_t movement, float acceleration);
+        ValueChangeType _do_change(int32_t movement, float acceleration);
 
 };
